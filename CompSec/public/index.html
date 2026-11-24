@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sim-C | Inventory assistant</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="brand">SIM-C</p>
+      <h1>Inventory assistant</h1>
+      <p>Check sample stock, account for incoming deliveries, and draft a reorder.</p>
+    </header>
+    <form id="ask">
+      <label for="message">What would you like to check?</label>
+      <textarea id="message" rows="2" maxlength="500" required placeholder="Draft a reorder for Harbor Foods"></textarea>
+      <div class="actions">
+        <button id="submit" type="submit">Ask Sim-C</button>
+        <button type="button" data-example="Show current inventory">View stock</button>
+        <button type="button" data-example="Which items are below minimum?">Check shortages</button>
+        <button type="button" data-example="Draft a reorder for Harbor Foods">Draft a reorder</button>
+      </div>
+    </form>
+    <section id="output" aria-labelledby="output-title" hidden>
+      <h2 id="output-title">Result</h2>
+      <p id="request"></p>
+      <p id="summary" role="status"></p>
+      <div class="table-wrap" id="table-wrap" hidden>
+        <table>
+          <caption class="sr-only">Inventory results</caption>
+          <thead><tr>
+            <th scope="col">Item</th><th scope="col">Supplier</th><th scope="col">On hand</th>
+            <th scope="col">Incoming</th><th scope="col">Projected</th><th scope="col">Minimum</th>
+            <th scope="col">Draft qty</th>
+          </tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <details id="workflow">
+        <summary>How Sim-C handled your request</summary>
+        <p id="engine"></p>
+        <ol id="steps"></ol>
+      </details>
+    </section>
+  </main>
+</body>
+</html>
